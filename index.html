@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Me perdonas?</title>
+    <style>
+        body{margin:0;padding:15px;background:#f0f0f0;font-family:Arial,sans-serif}
+        .container{position:relative;z-index:10;background:rgba(255,255,255,0.95);padding:25px;border-radius:15px;box-shadow:0 0 20px rgba(0,0,0,0.1);max-width:500px;margin:20px auto}
+        .snoopy-img{max-width:100%;width:90%;display:block;margin:0 auto 20px;border-radius:10px}
+        .mensaje{text-align:left;color:#333;line-height:1.6;font-size:16px}
+        .mensaje p{margin:0 0 12px 0;opacity:0;animation:fadeInUp 0.8s ease-out forwards}
+        .mensaje p:nth-child(1){animation-delay:0.3s}
+        .mensaje p:nth-child(2){animation-delay:1.3s}
+        .mensaje p:nth-child(3){animation-delay:2.3s}
+        .pregunta-final{font-weight:bold;color:#ff6b6b;margin-top:20px!important;animation-delay:3.3s!important;font-size:18px;text-align:center}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .hearts{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1}
+        .heart{position:absolute;font-size:24px;animation:float 6s ease-in-out infinite, colorChange 3s ease-in-out infinite}
+        @keyframes float{0%{transform:translateY(100vh) rotate(0deg);opacity:0}20%{opacity:0.8}100%{transform:translateY(-100px) rotate(360deg);opacity:0}}
+        @keyframes colorChange{0%{color:#ff6b6b}25%{color:#4ecdc4}50%{color:#ffe66d}75%{color:#ff8b94}100%{color:#ff6b6b}}
+    </style>
+</head>
+<body>
+    <div class="hearts" id="hearts"></div>
+    <div class="container">
+        <img src="snoopy.jpg" alt="Snoopy" class="snoopy-img">
+        <div class="mensaje">
+            <p>Me encantas, me gustas, me haces sentir bien. A tu lado la paso bien, me siento feliz.</p>
+            <p>Te quiero mucho, demasiado, nunca dudes de ello.</p>
+            <p>Te pido perdón, discúlpame, lo siento. Eres importante para mí y no quiero perderte.</p>
+            <p class="pregunta-final">¿Me perdonas?</p>
+        </div>
+    </div>
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.innerHTML = '♥';
+            heart.style.left = Math.random() * 100 + '%';
+            heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            document.getElementById('hearts').appendChild(heart);
+            setTimeout(() => heart.remove(), 6000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+</body>
+  </html>
